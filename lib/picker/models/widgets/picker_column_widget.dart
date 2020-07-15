@@ -6,10 +6,12 @@ import '../../../date_time_package.dart';
 import '../../picker_bloc.dart';
 import '../picker_column_delegates.dart';
 
-const _EXTENT = 58.0;
+const _EXTENT = 42.0;
 const _PERSPECTIVE = 0.01;
-const _MAGNIFICATION = 1.01;
+const _MAGNIFICATION = 1.1;
 const _OPACITY = 0.5;
+const _USE_MAGNIFICATION = true;
+const _SQUEEZE = 0.75;
 const _DELAY = Duration(milliseconds: 250);
 
 //MARK: PickerColumnWidget
@@ -64,6 +66,8 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
       controller: widget.controller,
       itemExtent: _EXTENT,
       magnification: _MAGNIFICATION,
+      useMagnifier: _USE_MAGNIFICATION,
+      squeeze: _SQUEEZE,
       offAxisFraction: widget.offAxisFraction,
       onSelectedItemChanged: (index) {
         if (!widget.delegate.eventChanged(index)) return;

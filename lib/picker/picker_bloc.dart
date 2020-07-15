@@ -10,7 +10,7 @@ class PickerBloc extends Disposable {
   PickerBloc({@required this.dateTimeEvent});
 
   final StreamController streamController = StreamController<DateTime>.broadcast();
-  final pickerHeight = 200.0;
+  final pickerHeight = 220.0;
   final pickerWidth = 280.0;
 
   @override

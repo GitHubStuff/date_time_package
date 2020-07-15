@@ -9,16 +9,18 @@ class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
   final pickerBloc = Modular.get<PickerBloc>();
 
   Widget build(BuildContext context) {
-    final slice = _pickerWidth / 26.0;
-    final colonSlice = slice * 2.0;
+    final slice = _pickerWidth / 25.0;
+    final colonSlice = slice * 1.80;
     final timeSlice = slice * 5.0;
+    // 0.20 from each of the colonSlice
+    final meridianSlice = timeSlice + ((slice * 0.20) * 2.0);
     final row = [
       Container(height: _pickerHeight, width: timeSlice, child: _hourWidget()),
       Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(':')),
       Container(height: _pickerHeight, width: timeSlice, child: _minuteWidget()),
       Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(':')),
       Container(height: _pickerHeight, width: timeSlice, child: _secondWidget()),
-      Container(height: _pickerHeight, width: timeSlice, child: _meridianWidget()),
+      Container(height: _pickerHeight, width: meridianSlice, child: _meridianWidget()),
     ];
     return Container(
       color: Colors.green,
@@ -43,5 +45,5 @@ class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
       PickerColumnWidget(delegate: SecondDelegate(pickerBloc.dateTimeEvent), offAxisFraction: 0.0)..setStartingRow();
 
   PickerColumnWidget _meridianWidget() =>
-      PickerColumnWidget(delegate: MeridianDelegate(pickerBloc.dateTimeEvent), offAxisFraction: 1.0)..setStartingRow();
+      PickerColumnWidget(delegate: MeridianDelegate(pickerBloc.dateTimeEvent), offAxisFraction: 0.5)..setStartingRow();
 }

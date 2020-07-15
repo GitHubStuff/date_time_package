@@ -4,7 +4,7 @@ import '../../date_time_package.dart';
 
 const _BASEYEAR = 1700;
 const _MAXYEAR = 2199;
-const _FONTSIZE = 32.0;
+const _FONTSIZE = 34.0;
 const _MONTHSINYEAR = 12;
 const _HOURSINDAY = 24;
 const _MINUTESINHOUR = 60;
