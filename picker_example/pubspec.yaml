@@ -1,0 +1,48 @@
+name: example
+description: Template project for apps that need sqlite
+publish_to: "none"
+version: 0.0.4
+
+environment:
+  sdk: ">=2.8.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  after_layout: ^1.0.7+2 # Execute code after first layout
+  auto_size_text: ^2.1.0 # Automatically resizes text to fit perfectly within its bounds.
+  cupertino_icons: ^0.1.3
+  enum_to_string: ^1.0.9
+  equatable: ^1.2.0 # Needed for flutter_bloc
+  flutter_bloc: ^5.0.1 # Widges to implement BLoC pattern
+  flutter_localizations: # Flutter SDK for internalization
+    sdk: flutter
+  flutter_modular: ^1.3.0 # Smart project structure with dependency injection and route management
+  mode_theme:
+    git:
+      url: https://github.com/GitHubStuff/mode_theme.git
+  tracers:
+    git:
+      url: https://github.com/GitHubStuff/tracers.git
+  # SQLite extras
+  sqlite_controller:
+    git:
+      url: https://github.com/GitHubStuff/sqlite_controller.git
+  sqlite_explorer:
+    git:
+      url: https://github.com/GitHubStuff/sqlite_explorer.git
+  font_awesome_flutter:
+    git:
+      url: https://github.com/GitHubStuff/font_awesome_flutter.git
+  # Add Project specific packages here ...
+  date_time_package:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - languages/en.json
