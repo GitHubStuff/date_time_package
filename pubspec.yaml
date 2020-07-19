@@ -1,6 +1,6 @@
 name: date_time_package
 description: A new Flutter package project.
-version: 0.0.1+1
+version: 0.0.1+10
 author:
 
 environment:
@@ -19,3 +19,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
+  assets:
+    - images/

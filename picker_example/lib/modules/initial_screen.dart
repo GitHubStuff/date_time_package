@@ -1,4 +1,7 @@
 import 'package:date_time_package/date_time_package.dart';
+import 'package:date_time_package/picker/models/widgets/date_time_picker_widget.dart';
+import 'package:date_time_package/picker/models/widgets/segment_date_time_widget.dart';
+import 'package:date_time_package/picker/models/widgets/set_date_time_widget.dart';
 
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
@@ -41,13 +44,6 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 class _InitialWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          DatePickerWidget(),
-          TimePickerWidget(),
-        ],
-      ),
-    );
+    return Center(child: DateTimePickerWidget());
   }
 }

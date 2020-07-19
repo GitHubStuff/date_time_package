@@ -39,7 +39,7 @@ class DatePickerWidget extends ModularStatelessWidget<PickerModule> {
     final pickerBloc = Modular.get<PickerModularBloc>();
 
     return StreamBuilder<DateTime>(
-      stream: pickerBloc.streamController.stream,
+      stream: pickerBloc.dayWidgetRebuildStreamController.stream,
       builder: (context, snapshot) {
         return PickerColumnWidget(delegate: DayDelegate(pickerBloc.dateTimeEvent), offAxisFraction: -0.35)
           ..setStartingRow();

@@ -107,7 +107,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1+1"
+    version: "0.0.1+10"
   enum_to_string:
     dependency: "direct main"
     description:
@@ -375,10 +375,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "675bff1e69c19231f59bb4d09d288da8f5e1daca"
+      resolved-ref: b66e276c728b7508a77f3288c25089fecf7b2bda
       url: "https://github.com/GitHubStuff/sqlite_explorer.git"
     source: git
-    version: "0.3.0+0"
+    version: "0.3.0+1"
   stack_trace:
     dependency: transitive
     description:
@@ -406,7 +406,7 @@ packages:
       name: synchronized
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.0+1"
+    version: "2.2.0+2"
   term_glyph:
     dependency: transitive
     description:

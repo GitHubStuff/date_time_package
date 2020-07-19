@@ -23,7 +23,7 @@ class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
       Container(height: _pickerHeight, width: meridianSlice, child: _meridianWidget()),
     ];
     return Container(
-      color: Colors.green,
+      color: Colors.lightBlue,
       width: _pickerWidth,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.0),

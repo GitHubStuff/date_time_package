@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:date_time_package/picker/models/picker_modular/event/event_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +73,6 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
         if (!widget.delegate.eventChanged(index)) return;
         _timer?.cancel();
         _timer = Timer(_DELAY, () {
-          debugPrint('🥶{picker_column_widget} delegate: ${widget.delegate.toString()}');
           if (widget.delegate is YearDelegate) {
             _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(year: index + 1700));
           } else if (widget.delegate is MonthDelegate) {
@@ -111,8 +109,8 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
   void _updateEventAndRebuildDayWidget(bool dayWidgetNeedsRebuild) {
     final pickerBloc = Modular.get<PickerModularBloc>();
     if (dayWidgetNeedsRebuild) {
-      pickerBloc.streamController.add(widget.delegate.event.dateTime);
+      pickerBloc.dayWidgetRebuildStreamController.add(widget.delegate.event.dateTime);
     }
-    pickerBloc.eventBloc.add(UpdateEvent(widget.delegate.event));
+    pickerBloc.eventUpdatedStreamController.add(widget.delegate.event);
   }
 }
