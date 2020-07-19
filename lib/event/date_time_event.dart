@@ -36,12 +36,11 @@ class DateTimeEvent {
   int get year => _dateTime.year;
   String get months => DateFormat('MMM').format(_dateTime);
   String get hours => DateFormat('h').format(_dateTime);
-  String get minutes => DateFormat('mm').format(_dateTime);
-  String get seconds => DateFormat('ss').format(_dateTime);
   String get meridian => DateFormat('a').format(_dateTime);
   Meridian get meridianEnum => (_dateTime.hour < 12) ? Meridian.AM : Meridian.PM;
 
   bool setNew({int year, int month, int day, int hour, int minute, int second}) {
+    debugPrint('🥵{SETNEW} $year $month $day $hour $minute $second');
     bool rebuildDayPickerColumn = false;
     DateTime newTime = DateTime(
       year ?? _dateTime.year,

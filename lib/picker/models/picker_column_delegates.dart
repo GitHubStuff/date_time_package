@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../date_time_package.dart';
 
@@ -12,7 +13,7 @@ const _SECONDSINMINUTE = 60;
 
 abstract class PickerDelegate extends ListWheelChildDelegate {
   static var style = TextStyle(fontSize: _FONTSIZE);
-  DateTimeEvent event;
+  DateTimeEvent event; //Shared across all widgets....
   int startIndex();
   bool eventChanged(int index);
 }
@@ -98,8 +99,13 @@ class HourDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = index % _HOURSINDAY;
-    final tempEvent = DateTimeEvent()..setNew(hour: bound);
-    return Text(tempEvent.hours, style: PickerDelegate.style);
+    int hour;
+    if (bound == 0) {
+      hour = 12;
+    } else {
+      hour = (bound <= 12) ? bound : bound - 12;
+    }
+    return Text(hour.toString().padLeft(2, '0'), style: PickerDelegate.style);
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -121,8 +127,7 @@ class MinuteDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = index % _MINUTESINHOUR;
-    final tempEvent = DateTimeEvent()..setNew(minute: bound);
-    return Text(tempEvent.minutes, style: PickerDelegate.style);
+    return Text(bound.toString().padLeft(2, '0'), style: PickerDelegate.style);
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -144,8 +149,7 @@ class SecondDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = index % _SECONDSINMINUTE;
-    final tempEvent = DateTimeEvent()..setNew(second: bound);
-    return Text(tempEvent.seconds, style: PickerDelegate.style);
+    return Text(bound.toString().padLeft(2, '0'), style: PickerDelegate.style);
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -166,8 +170,8 @@ class MeridianDelegate extends PickerDelegate {
   }
   Widget build(BuildContext context, int index) {
     if (index < 0 || index > 1) return null;
-    final tempEvent = DateTimeEvent()..setNew(hour: (index == 0) ? 0 : 13);
-    return Text(tempEvent.meridian, style: PickerDelegate.style);
+    final meridian = DateFormat('a').format(DateTime(2020, 1, 1, (index == 0) ? 0 : 13, 0, 0, 0, 0));
+    return Text(meridian, style: PickerDelegate.style);
   }
 
   bool shouldRebuild(oldDelegate) => true;

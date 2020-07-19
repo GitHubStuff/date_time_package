@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'package:date_time_package/picker/models/picker_modular/event/event_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 
 import '../../../date_time_package.dart';
-import '../../picker_bloc.dart';
+import '../picker_modular/picker_modular_bloc.dart';
 import '../picker_column_delegates.dart';
 
 const _EXTENT = 42.0;
@@ -73,29 +74,30 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
         if (!widget.delegate.eventChanged(index)) return;
         _timer?.cancel();
         _timer = Timer(_DELAY, () {
+          debugPrint('🥶{picker_column_widget} delegate: ${widget.delegate.toString()}');
           if (widget.delegate is YearDelegate) {
-            _rebuildDayWidget(widget.delegate.event.setNew(year: index + 1700));
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(year: index + 1700));
           } else if (widget.delegate is MonthDelegate) {
-            _rebuildDayWidget(widget.delegate.event.setNew(month: (index % 12) + 1));
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(month: (index % 12) + 1));
           } else if (widget.delegate is DayDelegate) {
             final bound = widget.delegate.event.days;
             int newDay = (index % bound) + 1;
-            _rebuildDayWidget(widget.delegate.event.setNew(day: newDay));
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(day: newDay));
           } else if (widget.delegate is HourDelegate) {
             final meridian = widget.delegate.event.meridianEnum;
             int hour = (index % 12) + ((meridian == Meridian.AM) ? 0 : 12);
-            widget.delegate.event.setNew(hour: hour);
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(hour: hour));
           } else if (widget.delegate is MinuteDelegate) {
-            widget.delegate.event.setNew(minute: index % 60);
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(minute: index % 60));
           } else if (widget.delegate is SecondDelegate) {
-            widget.delegate.event.setNew(second: index % 60);
+            _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(second: index % 60));
           } else if (widget.delegate is MeridianDelegate) {
             if (index == 0) {
               int hour = widget.delegate.event.dateTime.hour - 12;
-              widget.delegate.event.setNew(hour: hour);
+              _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(hour: hour));
             } else {
               int hour = widget.delegate.event.dateTime.hour + 12;
-              widget.delegate.event.setNew(hour: hour);
+              _updateEventAndRebuildDayWidget(widget.delegate.event.setNew(hour: hour));
             }
           }
         });
@@ -106,10 +108,11 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
     );
   }
 
-  void _rebuildDayWidget(bool needed) {
-    if (needed) {
-      final pickerBloc = Modular.get<PickerBloc>();
+  void _updateEventAndRebuildDayWidget(bool dayWidgetNeedsRebuild) {
+    final pickerBloc = Modular.get<PickerModularBloc>();
+    if (dayWidgetNeedsRebuild) {
       pickerBloc.streamController.add(widget.delegate.event.dateTime);
     }
+    pickerBloc.eventBloc.add(UpdateEvent(widget.delegate.event));
   }
 }

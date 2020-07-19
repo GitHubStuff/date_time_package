@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../picker_bloc.dart';
-import '../../picker_module.dart';
+import '../picker_modular/picker_modular_bloc.dart';
+import '../picker_modular/picker_module.dart';
 import '../picker_column_delegates.dart';
 import 'picker_column_widget.dart';
 
 class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
-  final pickerBloc = Modular.get<PickerBloc>();
+  final pickerBloc = Modular.get<PickerModularBloc>();
 
   Widget build(BuildContext context) {
     final slice = _pickerWidth / 25.0;
