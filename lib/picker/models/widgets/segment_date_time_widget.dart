@@ -7,7 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
   final _pickerBloc = Modular.get<PickerModularBloc>();
-  final TextStyle _textStyle = TextStyle(fontSize: 28.0);
+  TextStyle _textStyle(BuildContext context) => TextStyle(fontSize: 28.0, color: textColor.color(context));
   static const _padding = 16.0;
   static const double _spacing = 12.0;
 
@@ -32,12 +32,12 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
                       SizedBox(width: _spacing),
                       Text(
                         'Date',
-                        style: _textStyle,
+                        style: _textStyle(context),
                       ),
                     ],
                   ),
                 ),
-                color: Colors.red),
+                color: dateColor.color(context)),
           ),
           GestureDetector(
             onTap: () {
@@ -54,12 +54,12 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
                     SizedBox(width: _spacing),
                     Text(
                       'Time',
-                      style: _textStyle,
+                      style: _textStyle(context),
                     ),
                   ],
                 ),
               ),
-              color: Colors.lightBlue,
+              color: timeColor.color(context),
             ),
           )
         ],

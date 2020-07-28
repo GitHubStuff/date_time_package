@@ -16,9 +16,9 @@ const _DELAY = Duration(milliseconds: 250);
 
 //MARK: PickerColumnWidget
 class PickerColumnWidget extends StatelessWidget {
-  static Widget seperatorWidget(String seperator) {
+  static Widget seperatorWidget(BuildContext context, String seperator) {
     return ListWheelScrollView(
-      children: <Widget>[Text(seperator, style: PickerDelegate.style)],
+      children: <Widget>[Text(seperator, style: PickerDelegate.style(context))],
       itemExtent: _EXTENT,
     );
   }

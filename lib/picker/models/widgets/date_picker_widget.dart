@@ -1,3 +1,4 @@
+import 'package:date_time_package/picker/constants.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,21 @@ class DatePickerWidget extends ModularStatelessWidget<PickerModule> {
 
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: dateColor.color(context),
       width: _pickerWidth,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.0),
         child: Row(children: [
           Container(height: _pickerHeight, width: _pickerWidth * 0.24, child: _buildDayWidget()),
-          Container(height: _pickerHeight, width: _pickerWidth * 0.03, child: PickerColumnWidget.seperatorWidget('-')),
+          Container(
+              height: _pickerHeight,
+              width: _pickerWidth * 0.03,
+              child: PickerColumnWidget.seperatorWidget(context, '-')),
           Container(height: _pickerHeight, width: _pickerWidth * 0.33, child: _monthWidget()),
-          Container(height: _pickerHeight, width: _pickerWidth * 0.03, child: PickerColumnWidget.seperatorWidget('-')),
+          Container(
+              height: _pickerHeight,
+              width: _pickerWidth * 0.03,
+              child: PickerColumnWidget.seperatorWidget(context, '-')),
           Container(height: _pickerHeight, width: _pickerWidth * 0.33, child: _yearWidget()),
         ]),
       ),

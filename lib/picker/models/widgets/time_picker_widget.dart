@@ -1,3 +1,4 @@
+import 'package:date_time_package/picker/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../picker_modular/picker_modular_bloc.dart';
@@ -16,14 +17,14 @@ class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
     final meridianSlice = timeSlice + ((slice * 0.20) * 2.0);
     final row = [
       Container(height: _pickerHeight, width: timeSlice, child: _hourWidget()),
-      Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(':')),
+      Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(context, ':')),
       Container(height: _pickerHeight, width: timeSlice, child: _minuteWidget()),
-      Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(':')),
+      Container(height: _pickerHeight, width: colonSlice, child: PickerColumnWidget.seperatorWidget(context, ':')),
       Container(height: _pickerHeight, width: timeSlice, child: _secondWidget()),
       Container(height: _pickerHeight, width: meridianSlice, child: _meridianWidget()),
     ];
     return Container(
-      color: Colors.lightBlue,
+      color: timeColor.color(context),
       width: _pickerWidth,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.0),

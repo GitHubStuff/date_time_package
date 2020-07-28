@@ -8,11 +8,11 @@ import '../../constants.dart';
 
 class SetDateTimeWidget extends ModularStatelessWidget<PickerModule> {
   final _pickerBloc = Modular.get<PickerModularBloc>();
-  final TextStyle _textStyle = TextStyle(fontSize: 22.0);
+  TextStyle _textStyle(BuildContext context) => TextStyle(fontSize: 22.0, color: textColor.color(context));
 
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueAccent,
+      color: primaryColor.color(context),
       width: _pickerBloc.pickerWidth,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -45,12 +45,12 @@ class SetDateTimeWidget extends ModularStatelessWidget<PickerModule> {
       children: <Widget>[
         Text(
           _pickerBloc.dateTimeEvent.formattedDate,
-          style: _textStyle,
+          style: _textStyle(context),
         ),
         SizedBox(height: 4.0),
         Text(
           _pickerBloc.dateTimeEvent.formattedTime,
-          style: _textStyle,
+          style: _textStyle(context),
         ),
       ],
     );
