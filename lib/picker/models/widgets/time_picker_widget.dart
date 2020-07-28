@@ -34,8 +34,8 @@ class TimePickerWidget extends ModularStatelessWidget<PickerModule> {
     );
   }
 
-  double get _pickerWidth => pickerBloc.pickerWidth;
-  double get _pickerHeight => pickerBloc.pickerHeight;
+  double get _pickerWidth => pickerWidth;
+  double get _pickerHeight => pickerHeight;
 
   PickerColumnWidget _hourWidget() =>
       PickerColumnWidget(delegate: HourDelegate(pickerBloc.dateTimeEvent), offAxisFraction: -1.0)..setStartingRow();

@@ -8,6 +8,17 @@ ModeColor dateColor = ModeColor(light: Color(0xffeee4e1), dark: Color(0xff290025
 ModeColor timeColor = ModeColor(light: Color(0xffe6beae), dark: Color(0xff4f0147));
 ModeColor textColor = ModeColor(light: Colors.black87, dark: Colors.tealAccent);
 
+// Height of the widget shows date/time and icon
+const double headerHeight = 72.0;
+// Height of the widget shows the date/time segment
+const double segmentHeight = 48.0 + 12.0;
+
+const arrowHeight = 10.0;
+const pickerHeight = 220.0;
+const pickerWidth = 280.0;
+
+double get totalPickerHeight => headerHeight + segmentHeight + pickerHeight;
+
 get setterImage => Image(
       image: AssetImage(
         setIcon,

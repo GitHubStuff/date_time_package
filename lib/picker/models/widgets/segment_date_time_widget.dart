@@ -3,6 +3,7 @@ import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
+import 'package:date_time_package/widgets/date_time_popover_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -14,7 +15,8 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
 
   Widget build(BuildContext context) {
     return Container(
-      width: _pickerBloc.pickerWidth,
+      width: pickerWidth,
+      height: segmentHeight,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -31,7 +33,7 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
         _pickerBloc.pickerTypeController.add(PickerStyle.date);
       },
       child: Container(
-          width: _pickerBloc.pickerWidth / 2.0,
+          width: pickerWidth / 2.0,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: _padding),
             child: Row(
@@ -56,7 +58,7 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
         _pickerBloc.pickerTypeController.add(PickerStyle.time);
       },
       child: Container(
-        width: _pickerBloc.pickerWidth / 2.0,
+        width: pickerWidth / 2.0,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: _padding),
           child: Row(

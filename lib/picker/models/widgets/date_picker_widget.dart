@@ -40,8 +40,8 @@ class DatePickerWidget extends ModularStatelessWidget<PickerModule> {
     );
   }
 
-  double get _pickerWidth => pickerBloc.pickerWidth;
-  double get _pickerHeight => pickerBloc.pickerHeight;
+  double get _pickerWidth => pickerWidth;
+  double get _pickerHeight => pickerHeight;
 
   PickerColumnWidget _yearWidget() =>
       PickerColumnWidget(delegate: YearDelegate(pickerBloc.dateTimeEvent), offAxisFraction: 0.35)..setStartingRow();

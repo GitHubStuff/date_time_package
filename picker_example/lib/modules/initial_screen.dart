@@ -1,5 +1,4 @@
 import 'package:date_time_package/date_time_package.dart';
-import 'package:date_time_package/picker/models/widgets/date_time_picker_widget.dart';
 
 import '../modules/initial_module.dart';
 import '../resources/app_localizations.dart';
@@ -40,8 +39,29 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 
 //MARK:
 class _InitialWidget extends StatelessWidget {
+  GlobalKey _containerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return Center(child: DateTimePickerWidget());
+    return buttonWidget(context);
+    //return Center(child: DateTimePickerWidget());
+  }
+
+  Widget buttonWidget(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        DateTimePopoverWidget popover = DateTimePopoverWidget(context: context)..show(widgetKey: _containerKey);
+      },
+      child: Padding(
+        key: _containerKey,
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          color: Colors.teal,
+          child: Text(
+            'SORT OF BUTTON',
+            style: TextStyle(fontSize: 24.0),
+          ),
+        ),
+      ),
+    );
   }
 }

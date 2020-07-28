@@ -1,20 +1,22 @@
 // Widget that displays the date/time and icon at 'the top' of the widget
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
+import 'package:date_time_package/widgets/date_time_popover_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../date_time_package.dart';
 import '../../constants.dart';
 
-class SetDateTimeWidget extends ModularStatelessWidget<PickerModule> {
+class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
   final _pickerBloc = Modular.get<PickerModularBloc>();
   TextStyle _textStyle(BuildContext context) => TextStyle(fontSize: 22.0, color: textColor.color(context));
 
   Widget build(BuildContext context) {
     return Container(
+      height: headerHeight,
       color: primaryColor.color(context),
-      width: _pickerBloc.pickerWidth,
+      width: pickerWidth,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
