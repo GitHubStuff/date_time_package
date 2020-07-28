@@ -1,3 +1,4 @@
+// Widget that displays the date/time and icon at 'the top' of the widget
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
 import 'package:flutter/material.dart';

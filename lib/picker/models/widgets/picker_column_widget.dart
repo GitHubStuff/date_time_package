@@ -1,3 +1,6 @@
+// Widget that shows the ListWheel. Date and Time are columns of these types of widgets
+// that display as ListWheels. The information displayed is controlled by which type
+// delegate is passed to an instance of this widget.
 import 'dart:async';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +40,8 @@ class PickerColumnWidget extends StatelessWidget {
     );
   }
 
+  // The initial index is calculated by the delgate with after a small delay (insures that
+  // widget has been rendered, advances to starting row).
   void setStartingRow() {
     final index = delegate.startIndex();
     Future.delayed(Duration(microseconds: 9000), () {
@@ -71,6 +76,8 @@ class __PickerColumnWidget extends State<_PickerColumnWidget> {
       offAxisFraction: widget.offAxisFraction,
       onSelectedItemChanged: (index) {
         if (!widget.delegate.eventChanged(index)) return;
+        // To keep scrolling smooth, a timer is created/canceled as the user scrolls
+        // only AFTER the use pauses scrolling for _DELAY amount is the date/time updated.
         _timer?.cancel();
         _timer = Timer(_DELAY, () {
           if (widget.delegate is YearDelegate) {

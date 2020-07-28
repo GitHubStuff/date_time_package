@@ -1,3 +1,4 @@
+// The widget/segment to toggle between DATE/TIME headers
 import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
@@ -17,52 +18,60 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          GestureDetector(
-            onTap: () {
-              _pickerBloc.pickerTypeController.add(PickerStyle.date);
-            },
-            child: Container(
-                width: _pickerBloc.pickerWidth / 2.0,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: _padding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      dateImage,
-                      SizedBox(width: _spacing),
-                      Text(
-                        'Date',
-                        style: _textStyle(context),
-                      ),
-                    ],
-                  ),
-                ),
-                color: dateColor.color(context)),
-          ),
-          GestureDetector(
-            onTap: () {
-              _pickerBloc.pickerTypeController.add(PickerStyle.time);
-            },
-            child: Container(
-              width: _pickerBloc.pickerWidth / 2.0,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: _padding),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    timeImage,
-                    SizedBox(width: _spacing),
-                    Text(
-                      'Time',
-                      style: _textStyle(context),
-                    ),
-                  ],
-                ),
-              ),
-              color: timeColor.color(context),
-            ),
-          )
+          _dateSegment(context),
+          _timeSegment(context),
         ],
+      ),
+    );
+  }
+
+  Widget _dateSegment(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _pickerBloc.pickerTypeController.add(PickerStyle.date);
+      },
+      child: Container(
+          width: _pickerBloc.pickerWidth / 2.0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: _padding),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                dateImage,
+                SizedBox(width: _spacing),
+                Text(
+                  'Date',
+                  style: _textStyle(context),
+                ),
+              ],
+            ),
+          ),
+          color: dateColor.color(context)),
+    );
+  }
+
+  Widget _timeSegment(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        _pickerBloc.pickerTypeController.add(PickerStyle.time);
+      },
+      child: Container(
+        width: _pickerBloc.pickerWidth / 2.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: _padding),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              timeImage,
+              SizedBox(width: _spacing),
+              Text(
+                'Time',
+                style: _textStyle(context),
+              ),
+            ],
+          ),
+        ),
+        color: timeColor.color(context),
       ),
     );
   }

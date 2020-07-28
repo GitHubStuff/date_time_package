@@ -1,7 +1,7 @@
 name: date_time_package
-description: A new Flutter package project.
-version: 0.0.1+12
-author:
+description: A Date/Time Flutter package project.
+version: 0.0.1+14
+author: Steven Smith
 
 environment:
   sdk: ">=2.8.0 <3.0.0"

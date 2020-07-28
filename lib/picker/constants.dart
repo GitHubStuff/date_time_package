@@ -7,6 +7,7 @@ ModeColor primaryColor = ModeColor(light: Color(0xffecf8f8), dark: Color(0xff230
 ModeColor dateColor = ModeColor(light: Color(0xffeee4e1), dark: Color(0xff290025));
 ModeColor timeColor = ModeColor(light: Color(0xffe6beae), dark: Color(0xff4f0147));
 ModeColor textColor = ModeColor(light: Colors.black87, dark: Colors.tealAccent);
+
 get setterImage => Image(
       image: AssetImage(
         setIcon,

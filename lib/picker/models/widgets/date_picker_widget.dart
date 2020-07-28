@@ -1,3 +1,4 @@
+// Displays the 'DATE' portion
 import 'package:date_time_package/picker/constants.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
@@ -8,26 +9,32 @@ import '../picker_column_delegates.dart';
 import 'picker_column_widget.dart';
 
 class DatePickerWidget extends ModularStatelessWidget<PickerModule> {
+  static const _dayPercentage = 0.24;
+  static const _monthPercentage = 0.33;
+  static const _yearPercentage = 0.33;
+  static const _seperatorPercentage = 0.03;
+
   final pickerBloc = Modular.get<PickerModularBloc>();
 
   Widget build(BuildContext context) {
     return Container(
       color: dateColor.color(context),
       width: _pickerWidth,
+      height: _pickerHeight,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.0),
         child: Row(children: [
-          Container(height: _pickerHeight, width: _pickerWidth * 0.24, child: _buildDayWidget()),
+          Container(height: _pickerHeight, width: _pickerWidth * _dayPercentage, child: _buildDayWidget()),
           Container(
               height: _pickerHeight,
-              width: _pickerWidth * 0.03,
+              width: _pickerWidth * _seperatorPercentage,
               child: PickerColumnWidget.seperatorWidget(context, '-')),
-          Container(height: _pickerHeight, width: _pickerWidth * 0.33, child: _monthWidget()),
+          Container(height: _pickerHeight, width: _pickerWidth * _monthPercentage, child: _monthWidget()),
           Container(
               height: _pickerHeight,
-              width: _pickerWidth * 0.03,
+              width: _pickerWidth * _seperatorPercentage,
               child: PickerColumnWidget.seperatorWidget(context, '-')),
-          Container(height: _pickerHeight, width: _pickerWidth * 0.33, child: _yearWidget()),
+          Container(height: _pickerHeight, width: _pickerWidth * _yearPercentage, child: _yearWidget()),
         ]),
       ),
     );
