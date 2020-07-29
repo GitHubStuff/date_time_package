@@ -47,21 +47,12 @@ class _InitialWidget extends StatelessWidget {
   }
 
   Widget buttonWidget(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        DateTimePopoverWidget popover = DateTimePopoverWidget(context: context)..show(widgetKey: _containerKey);
+    return RaisedButton(
+      key: _containerKey,
+      onPressed: () {
+        DateTimePopoverWidget(context: context)..show(widgetKey: _containerKey);
       },
-      child: Padding(
-        key: _containerKey,
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          color: Colors.teal,
-          child: Text(
-            'SORT OF BUTTON',
-            style: TextStyle(fontSize: 24.0),
-          ),
-        ),
-      ),
+      child: Text('Bleh', style: TextStyle(fontSize: 24.0)),
     );
   }
 }

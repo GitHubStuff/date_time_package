@@ -4,6 +4,7 @@ import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart' as Constant;
 import 'package:date_time_package/picker/models/widgets/triangle_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:mode_theme/mode_theme.dart';
 
 enum PopoverDirection { above, below }
 
@@ -106,7 +107,7 @@ class DateTimePopoverWidget {
                             width: Constant.pickerWidth,
                             height: Constant.totalPickerHeight,
                             decoration: BoxDecoration(color: _arrowColor, borderRadius: BorderRadius.circular(10.0)),
-                            child: DateTimePickerWidget(),
+                            child: _themer(context),
                           )),
                     ],
                   ),
@@ -117,6 +118,14 @@ class DateTimePopoverWidget {
         ),
       );
     });
+  }
+
+  Widget _themer(BuildContext context) {
+    // Wrap in a dialog to make sure Theme propagates
+    return Dialog(
+      insetPadding: EdgeInsets.all(0.0),
+      child: DateTimePickerWidget(),
+    );
   }
 
   void dismiss() {
