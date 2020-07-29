@@ -3,6 +3,7 @@ import 'package:date_time_package/picker/models/picker_modular/picker_module.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../date_time_package.dart';
 import 'date_picker_widget.dart';
 import 'segment_date_time_widget.dart';
 import 'header_date_time_icon_widget.dart';
@@ -12,11 +13,21 @@ enum PickerStyle { date, time }
 enum PickerDisplay { both, date, time }
 
 class DateTimePickerWidget extends ModularStatelessWidget<PickerModule> {
+  final PickerSetDateTimeEventCallback setCallback;
   final _pickerBloc = Modular.get<PickerModularBloc>();
+
+  DateTimePickerWidget({@required this.setCallback});
+
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderDateTimeIconWidget(),
+        GestureDetector(
+            child: HeaderDateTimeIconWidget(),
+            onTap: () {
+              if (setCallback != null) {
+                setCallback(_pickerBloc.dateTimeEvent);
+              }
+            }),
         SegmentDateTimeWidget(),
         StreamBuilder<PickerStyle>(
           stream: _pickerBloc.pickerTypeController.stream,

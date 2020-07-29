@@ -50,7 +50,12 @@ class _InitialWidget extends StatelessWidget {
     return RaisedButton(
       key: _containerKey,
       onPressed: () {
-        DateTimePopoverWidget(context: context)..show(widgetKey: _containerKey);
+        DateTimePopoverWidget(
+          context: context,
+          resultCallback: (dateTimeEvent) {
+            print('${dateTimeEvent.toString()}');
+          },
+        )..show(widgetKey: _containerKey);
       },
       child: Text('Bleh', style: TextStyle(fontSize: 24.0)),
     );

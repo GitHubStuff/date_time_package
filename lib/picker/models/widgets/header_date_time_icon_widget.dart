@@ -11,8 +11,6 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
   final _pickerBloc = Modular.get<PickerModularBloc>();
   TextStyle _textStyle(BuildContext context) => TextStyle(
         fontSize: 22.0,
-        color: textColor.color(context),
-        fontFamily: '.SF UI Display',
       );
 
   Widget build(BuildContext context) {

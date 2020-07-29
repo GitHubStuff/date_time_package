@@ -7,11 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:tracers/tracers.dart' as Log;
 
 enum PopoverDirection { above, below }
+typedef PickerSetDateTimeEventCallback = Function(DateTimeEvent dateTimeEvent);
 
 class DateTimePopoverWidget {
   static BuildContext _context;
 
   PopoverDirection _direction;
+  VoidCallback dismissCallback;
+  PickerSetDateTimeEventCallback resultCallback;
   Offset _offset;
   OverlayEntry _overlayEntry;
   Size _screenSize;
@@ -24,7 +27,7 @@ class DateTimePopoverWidget {
     return Rect.fromLTWH(offset.dx, offset.dy, renderBox.size.width, renderBox.size.height);
   }
 
-  DateTimePopoverWidget({BuildContext context}) {
+  DateTimePopoverWidget({BuildContext context, this.dismissCallback, this.resultCallback}) {
     if (context != null) DateTimePopoverWidget._context = context;
   }
 
@@ -126,7 +129,13 @@ class DateTimePopoverWidget {
     // Wrap in a dialog to make sure Theme propagates
     return Dialog(
       insetPadding: EdgeInsets.all(0.0),
-      child: DateTimePickerWidget(),
+      child: DateTimePickerWidget(
+        setCallback: (DateTimeEvent dateTimeEvent) {
+          _overlayEntry.remove();
+          _direction = null;
+          if (resultCallback != null) resultCallback(dateTimeEvent);
+        },
+      ),
     );
   }
 
@@ -138,9 +147,9 @@ class DateTimePopoverWidget {
 
     _overlayEntry.remove();
     _direction = null;
-    // if (dismissCallback != null) {
-    //   dismissCallback();
-    // }
+    if (dismissCallback != null) {
+      dismissCallback();
+    }
 
     // if (this.stateChanged != null) {
     //   this.stateChanged(false);
