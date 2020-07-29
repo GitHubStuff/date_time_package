@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:mode_theme/mode_theme.dart';
 
 const String setIcon = 'images/setter.png';
-ModeColor primaryColor = ModeColor(light: Color(0xffecf8f8), dark: Color(0xff230c33));
-ModeColor dateColor = ModeColor(light: Color(0xffeee4e1), dark: Color(0xff290025));
-ModeColor timeColor = ModeColor(light: Color(0xffe6beae), dark: Color(0xff4f0147));
+ModeColor primaryColor = ModeColor(light: Color(0xffecf8f8), dark: Color(0xff022c43));
+ModeColor dateColor = ModeColor(light: Color(0xffeee4e1), dark: Color(0xff115173));
+ModeColor timeColor = ModeColor(light: Color(0xffe6beae), dark: Color(0xff053f5e));
 ModeColor textColor = ModeColor(light: Colors.black87, dark: Colors.tealAccent);
 
 // Height of the widget shows date/time and icon

@@ -39,7 +39,7 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 
 //MARK:
 class _InitialWidget extends StatelessWidget {
-  GlobalKey _containerKey = GlobalKey();
+  final GlobalKey _containerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return buttonWidget(context);

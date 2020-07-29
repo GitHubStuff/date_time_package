@@ -4,7 +4,7 @@ import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart' as Constant;
 import 'package:date_time_package/picker/models/widgets/triangle_painter.dart';
 import 'package:flutter/material.dart';
-import 'package:mode_theme/mode_theme.dart';
+import 'package:tracers/tracers.dart' as Log;
 
 enum PopoverDirection { above, below }
 
@@ -54,10 +54,10 @@ class DateTimePopoverWidget {
     if (dy <= MediaQuery.of(context).padding.top + 10) {
       // The have not enough space above, show menu under the widget.
       dy = Constant.arrowHeight + _showRect.height + _showRect.top;
-      _direction = PopoverDirection.below;
+      _direction = PopoverDirection.above;
     } else {
       dy -= Constant.arrowHeight;
-      _direction = PopoverDirection.above;
+      _direction = PopoverDirection.below;
     }
 
     return Offset(dx, dy);
@@ -70,12 +70,15 @@ class DateTimePopoverWidget {
       return GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
+          Log.v('onTap');
           dismiss();
         },
         onVerticalDragStart: (DragStartDetails details) {
+          Log.v('onVerticalDragStart');
           dismiss();
         },
         onHorizontalDragStart: (DragStartDetails details) {
+          Log.v('onHorizontalDragStart');
           dismiss();
         },
         child: Container(
@@ -107,7 +110,7 @@ class DateTimePopoverWidget {
                             width: Constant.pickerWidth,
                             height: Constant.totalPickerHeight,
                             decoration: BoxDecoration(color: _arrowColor, borderRadius: BorderRadius.circular(10.0)),
-                            child: _themer(context),
+                            child: _dialogWrapper(context),
                           )),
                     ],
                   ),
@@ -120,7 +123,7 @@ class DateTimePopoverWidget {
     });
   }
 
-  Widget _themer(BuildContext context) {
+  Widget _dialogWrapper(BuildContext context) {
     // Wrap in a dialog to make sure Theme propagates
     return Dialog(
       insetPadding: EdgeInsets.all(0.0),

@@ -3,7 +3,6 @@ import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/picker_modular/picker_module.dart';
-import 'package:date_time_package/widgets/date_time_popover_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
