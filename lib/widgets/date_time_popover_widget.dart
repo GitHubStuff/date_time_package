@@ -70,7 +70,6 @@ class DateTimePopoverWidget {
       return GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
-          Log.v('onTap');
           dismiss();
         },
         onVerticalDragStart: (DragStartDetails details) {
