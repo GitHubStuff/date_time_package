@@ -27,16 +27,8 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
                 builder: (context, snapshot) {
                   return _dateTimeWidget(context);
                 }),
-            Expanded(
-              child: Container(),
-            ),
-            Container(
-              height: 48,
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: setterImage,
-              ),
-            ),
+            Expanded(child: Container()),
+            _iconWidget(context),
           ],
         ),
       ),
@@ -56,6 +48,22 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
           _pickerBloc.dateTimeEvent.formattedTime,
           style: _textStyle(context),
         ),
+      ],
+    );
+  }
+
+  Widget _iconWidget(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 36,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: setterImage,
+          ),
+        ),
+        SizedBox(height: 4.0),
+        Text('Set'),
       ],
     );
   }
