@@ -52,6 +52,7 @@ class _InitialWidget extends StatelessWidget {
       onPressed: () {
         DateTimePopoverWidget(
           context: context,
+          initialDateTime: DateTime(2017, 1, 4, 13, 26, 30, 0, 0),
           resultCallback: (dateTimeEvent) {
             print('${dateTimeEvent.toString()}');
           },

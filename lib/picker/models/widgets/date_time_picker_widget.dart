@@ -13,10 +13,10 @@ enum PickerStyle { date, time }
 enum PickerDisplay { both, date, time }
 
 class DateTimePickerWidget extends ModularStatelessWidget<PickerModule> {
-  final PickerSetDateTimeEventCallback setCallback;
+  final PickerSetDateTimeEventCallback setCallbackWithNewDateTime;
   final _pickerBloc = Modular.get<PickerModularBloc>();
 
-  DateTimePickerWidget({@required this.setCallback});
+  DateTimePickerWidget({@required this.setCallbackWithNewDateTime});
 
   Widget build(BuildContext context) {
     return Column(
@@ -24,8 +24,8 @@ class DateTimePickerWidget extends ModularStatelessWidget<PickerModule> {
         GestureDetector(
             child: HeaderDateTimeIconWidget(),
             onTap: () {
-              if (setCallback != null) {
-                setCallback(_pickerBloc.dateTimeEvent);
+              if (setCallbackWithNewDateTime != null) {
+                setCallbackWithNewDateTime(_pickerBloc.dateTimeEvent);
               }
             }),
         SegmentDateTimeWidget(),

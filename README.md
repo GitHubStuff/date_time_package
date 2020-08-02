@@ -5,11 +5,31 @@
 Allows a field to host a popover that allows for selection Date/Time
 
 ## Steps
-1 - Create GlobalKey that will be added to the widget that 'Hosts' the popover
 
-2 - Create and instance of <i>DateTimePopoverWidget()</i> passing a context and <i>Function(DateTimeEvent dateTimeEvent)</i> that
+1 - The widget relies on flutter_module [https://pub.dev/packages/flutter_modular], so the host project must include <i>PickerModularBloc</i> in the module that extends <b>MainModule</b>:
+<pre>
+class AppModule extends MainModule {
+  @override
+  List<Bind> get binds => [
+        Bind((i) => AppBloc()),
+        Bind((i) => PickerModularBloc()), /// <*** INCLUDED HERE
+      ];
 
-3 - Call <i><b>show(widgetKey:  {globalkey});</b></i> to display the popover
+  @override
+  List<Router> get routers => [
+        :
+      ];
+
+  @override
+  Widget get bootstrap => AppWidget();
+}
+</pre>
+
+2 - Create GlobalKey that will be added to the widget that 'Hosts' the popover
+
+3 - Create and instance of <i>DateTimePopoverWidget()</i> passing a context and <i>Function(DateTimeEvent dateTimeEvent)</i> that
+
+4 - Call <i><b>show(widgetKey:  {globalkey});</b></i> to display the popover
 
 # See Example
 
@@ -17,6 +37,9 @@ Allows a field to host a popover that allows for selection Date/Time
 
 <pre>
 
+/// - Set PickerModularBloc() in MainModule (see above)
+  :
+  :
 final GlobalKey _containerKey = GlobalKey();
 
 Widget buttonWidget(BuildContext context) {
@@ -25,12 +48,18 @@ Widget buttonWidget(BuildContext context) {
       onPressed: () {
         DateTimePopoverWidget(
           context: context,
-          resultCallback: (dateTimeEvent) {
+          initialDateTime: DateTime(2019, 1, 2, 16, 27, 30, 0, 0),  // null => DateTime.now()
+          dismissCallback: (){
+            // Called if popover dismissed
+            print('User tapped out/dismissed');
+          }
+
+          resultCallback: (DateTimeEvent dateTimeEvent) {
             print('${dateTimeEvent.toString()}');
           },
         )..show(widgetKey: _containerKey);
       },
-      child: Text('Bleh', style: TextStyle(fontSize: 24.0)),
+      child: Text('Pick Date/Time', style: TextStyle(fontSize: 24.0)),
     );
   }
 </pre>
@@ -38,6 +67,8 @@ Widget buttonWidget(BuildContext context) {
 ### DateTimeEvent
 Class that wraps all information about the DateTime that was created by the popover. The most used/important is <i>dateTime</i> that is resulting DateTime.
 #### NOTE: tap outside the widget dismisses the popover and the callback is not called.
+
+##### DateTimeEvent user properties
 
 <pre>
 DateTime dateTime

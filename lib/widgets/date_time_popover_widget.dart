@@ -2,14 +2,17 @@ import 'dart:ui';
 
 import 'package:date_time_package/date_time_package.dart';
 import 'package:date_time_package/picker/constants.dart' as Constant;
+import 'package:date_time_package/picker/models/picker_modular/picker_modular_bloc.dart';
 import 'package:date_time_package/picker/models/widgets/triangle_painter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:tracers/tracers.dart' as Log;
 
 enum PopoverDirection { above, below }
 typedef PickerSetDateTimeEventCallback = Function(DateTimeEvent dateTimeEvent);
 
 class DateTimePopoverWidget {
+  
   static BuildContext _context;
 
   PopoverDirection _direction;
@@ -27,8 +30,15 @@ class DateTimePopoverWidget {
     return Rect.fromLTWH(offset.dx, offset.dy, renderBox.size.width, renderBox.size.height);
   }
 
-  DateTimePopoverWidget({BuildContext context, this.dismissCallback, this.resultCallback}) {
+  DateTimePopoverWidget({
+    BuildContext context,
+    this.dismissCallback,
+    this.resultCallback,
+    DateTime initialDateTime,
+  }) {
     if (context != null) DateTimePopoverWidget._context = context;
+    final _pickerBloc = Modular.get<PickerModularBloc>();
+    _pickerBloc.dateTimeEvent = DateTimeEvent(initialDateTime);
   }
 
   void show({@required GlobalKey widgetKey}) {
@@ -130,7 +140,7 @@ class DateTimePopoverWidget {
     return Dialog(
       insetPadding: EdgeInsets.all(0.0),
       child: DateTimePickerWidget(
-        setCallback: (DateTimeEvent dateTimeEvent) {
+        setCallbackWithNewDateTime: (DateTimeEvent dateTimeEvent) {
           _overlayEntry.remove();
           _direction = null;
           if (resultCallback != null) resultCallback(dateTimeEvent);
@@ -150,9 +160,5 @@ class DateTimePopoverWidget {
     if (dismissCallback != null) {
       dismissCallback();
     }
-
-    // if (this.stateChanged != null) {
-    //   this.stateChanged(false);
-    // }
   }
 }

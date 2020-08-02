@@ -100,7 +100,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1+15"
+    version: "0.0.2+1"
   enum_to_string:
     dependency: "direct main"
     description:
