@@ -1,7 +1,7 @@
 name: date_time_package
-description: A new Flutter package project.
-version: 0.0.1+1
-author:
+description: A Date/Time Flutter package project.
+version: 0.0.2+0
+author: Steven Smith
 
 environment:
   sdk: ">=2.8.0 <3.0.0"
@@ -10,12 +10,18 @@ dependencies:
   flutter:
     sdk: flutter
   equatable: ^1.2.0
-  flutter_bloc: ^5.0.1
+  flutter_bloc: ^6.0.1
   flutter_modular: ^1.3.0
   intl: ^0.16.1
+  mode_theme:
+    git:
+      url: https://github.com/GitHubStuff/mode_theme.git
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
+  uses-material-design: true
+  assets:
+    - images/

@@ -16,7 +16,7 @@ class LoggingBlocObserver extends BlocObserver {
   }
 
   @override
-  void onError(Bloc bloc, Object error, StackTrace stacktrace) {
+  void onError(Cubit bloc, Object error, StackTrace stacktrace) {
     super.onError(bloc, error, stacktrace);
     Log.e('{logging_bloc_delegate.dart} ${error.toString()}');
   }

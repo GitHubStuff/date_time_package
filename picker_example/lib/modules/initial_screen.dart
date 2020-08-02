@@ -39,15 +39,25 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
 
 //MARK:
 class _InitialWidget extends StatelessWidget {
+  final GlobalKey _containerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          DatePickerWidget(),
-          TimePickerWidget(),
-        ],
-      ),
+    return buttonWidget(context);
+    //return Center(child: DateTimePickerWidget());
+  }
+
+  Widget buttonWidget(BuildContext context) {
+    return RaisedButton(
+      key: _containerKey,
+      onPressed: () {
+        DateTimePopoverWidget(
+          context: context,
+          resultCallback: (dateTimeEvent) {
+            print('${dateTimeEvent.toString()}');
+          },
+        )..show(widgetKey: _containerKey);
+      },
+      child: Text('Bleh', style: TextStyle(fontSize: 24.0)),
     );
   }
 }

@@ -1,3 +1,4 @@
+// DateTime object used by picker
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -40,7 +41,6 @@ class DateTimeEvent {
   Meridian get meridianEnum => (_dateTime.hour < 12) ? Meridian.AM : Meridian.PM;
 
   bool setNew({int year, int month, int day, int hour, int minute, int second}) {
-    debugPrint('🥵{SETNEW} $year $month $day $hour $minute $second');
     bool rebuildDayPickerColumn = false;
     DateTime newTime = DateTime(
       year ?? _dateTime.year,
