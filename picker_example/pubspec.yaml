@@ -1,7 +1,7 @@
 name: picker_example
-description: Template project for apps that need sqlite
+description: Example to show date/time picker
 publish_to: "none"
-version: 0.0.4+4
+version: 0.0.4+5
 
 environment:
   sdk: ">=2.8.0 <3.0.0"

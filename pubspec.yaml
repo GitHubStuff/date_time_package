@@ -1,6 +1,6 @@
 name: date_time_package
 description: A Date/Time Flutter package project.
-version: 0.0.1+15
+version: 0.0.2+0
 author: Steven Smith
 
 environment:
