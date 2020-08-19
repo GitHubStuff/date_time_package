@@ -62,7 +62,7 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
             child: setterImage,
           ),
         ),
-        SizedBox(height: 4.0),
+        Expanded(child: SizedBox(height: 2.0)),
         Text('Set'),
       ],
     );

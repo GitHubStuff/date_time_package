@@ -12,7 +12,6 @@ enum PopoverDirection { above, below }
 typedef PickerSetDateTimeEventCallback = Function(DateTimeEvent dateTimeEvent);
 
 class DateTimePopoverWidget {
-  
   static BuildContext _context;
 
   PopoverDirection _direction;
@@ -52,6 +51,7 @@ class DateTimePopoverWidget {
     Overlay.of(DateTimePopoverWidget._context).insert(_overlayEntry);
   }
 
+  // Offset for rectangle tag
   Offset _calculateOffset(BuildContext context) {
     double dx = _showRect.left + _showRect.width / 2.0 - Constant.pickerWidth / 2.0;
     if (dx < 10.0) {

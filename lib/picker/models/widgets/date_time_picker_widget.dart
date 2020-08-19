@@ -21,6 +21,7 @@ class DateTimePickerWidget extends ModularStatelessWidget<PickerModule> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        /// Shows Date/Time and Set Icon/Text
         GestureDetector(
             child: HeaderDateTimeIconWidget(),
             onTap: () {

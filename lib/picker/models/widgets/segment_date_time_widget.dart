@@ -32,22 +32,23 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
         _pickerBloc.pickerTypeController.add(PickerStyle.date);
       },
       child: Container(
-          width: pickerWidth / 2.0,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: _padding),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                dateImage,
-                SizedBox(width: _spacing),
-                Text(
-                  'Date',
-                  style: _textStyle(context),
-                ),
-              ],
-            ),
+        width: pickerWidth / 2.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: _padding),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              dateImage,
+              SizedBox(width: _spacing),
+              Text(
+                'Date',
+                style: _textStyle(context),
+              ),
+            ],
           ),
-          color: dateColor.color(context)),
+        ),
+        color: dateColor.color(context),
+      ),
     );
   }
 
