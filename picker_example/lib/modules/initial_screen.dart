@@ -25,7 +25,10 @@ class InitialScreen extends ModularStatelessWidget<InitialModule> {
             },
           )
         ],
-        title: Text(tr(context, 'Title')),
+        title: Text(
+          tr(context, 'Title'),
+          textScaleFactor: 1.0,
+        ),
       ),
       body: _InitialWidget(), // body(context),
       floatingActionButton: FloatingActionButton(
@@ -58,7 +61,11 @@ class _InitialWidget extends StatelessWidget {
           },
         )..show(widgetKey: _containerKey);
       },
-      child: Text('Bleh', style: TextStyle(fontSize: 24.0)),
+      child: Text(
+        'Bleh',
+        style: TextStyle(fontSize: 24.0),
+        textScaleFactor: 1.0,
+      ),
     );
   }
 }

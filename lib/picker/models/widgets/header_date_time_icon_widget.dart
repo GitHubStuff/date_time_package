@@ -42,11 +42,13 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
         Text(
           _pickerBloc.dateTimeEvent.formattedDate,
           style: _textStyle(context),
+          textScaleFactor: 1.0,
         ),
         SizedBox(height: 4.0),
         Text(
           _pickerBloc.dateTimeEvent.formattedTime,
           style: _textStyle(context),
+          textScaleFactor: 1.0,
         ),
       ],
     );
@@ -63,7 +65,10 @@ class HeaderDateTimeIconWidget extends ModularStatelessWidget<PickerModule> {
           ),
         ),
         Expanded(child: SizedBox(height: 2.0)),
-        Text('Set'),
+        Text(
+          'Set',
+          textScaleFactor: 1.0,
+        ),
       ],
     );
   }

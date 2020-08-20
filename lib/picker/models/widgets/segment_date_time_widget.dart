@@ -43,6 +43,7 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
               Text(
                 'Date',
                 style: _textStyle(context),
+                textScaleFactor: 1.0,
               ),
             ],
           ),
@@ -69,6 +70,7 @@ class SegmentDateTimeWidget extends ModularStatelessWidget<PickerModule> {
               Text(
                 'Time',
                 style: _textStyle(context),
+                textScaleFactor: 1.0,
               ),
             ],
           ),

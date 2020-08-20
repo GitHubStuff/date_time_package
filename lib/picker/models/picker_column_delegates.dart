@@ -30,7 +30,11 @@ class YearDelegate extends PickerDelegate {
   //it does not go past max year.
   Widget build(BuildContext context, int index) {
     if (index + _BASEYEAR < _BASEYEAR || index + _BASEYEAR > _MAXYEAR) return null;
-    return Text('${index + _BASEYEAR}', style: PickerDelegate.style(context));
+    return Text(
+      '${index + _BASEYEAR}',
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -53,7 +57,11 @@ class MonthDelegate extends PickerDelegate {
     // Use the date/time format to create the string/text of the month name
     // to fudge/enable localization
     final monthName = DateTimeEvent.monthName(normalizeToMonthNameIndex);
-    return Text('$monthName', style: PickerDelegate.style(context));
+    return Text(
+      '$monthName',
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -76,7 +84,11 @@ class DayDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = (index % event.days) + 1;
-    return Text('$bound', style: PickerDelegate.style(context));
+    return Text(
+      '$bound',
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -111,7 +123,11 @@ class HourDelegate extends PickerDelegate {
     } else {
       hour = (bound <= 12) ? bound : bound - 12;
     }
-    return Text(hour.toString().padLeft(2, '0'), style: PickerDelegate.style(context));
+    return Text(
+      hour.toString().padLeft(2, '0'),
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -133,7 +149,11 @@ class MinuteDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = index % _MINUTESINHOUR;
-    return Text(bound.toString().padLeft(2, '0'), style: PickerDelegate.style(context));
+    return Text(
+      bound.toString().padLeft(2, '0'),
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -155,7 +175,11 @@ class SecondDelegate extends PickerDelegate {
   Widget build(BuildContext context, int index) {
     if (index < 0) return null;
     final bound = index % _SECONDSINMINUTE;
-    return Text(bound.toString().padLeft(2, '0'), style: PickerDelegate.style(context));
+    return Text(
+      bound.toString().padLeft(2, '0'),
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;
@@ -178,7 +202,11 @@ class MeridianDelegate extends PickerDelegate {
     if (index < 0 || index > 1) return null;
     // Use date format for meridian string to simplify localization
     final meridian = DateFormat('a').format(DateTime(2020, 1, 1, (index == 0) ? 0 : 13, 0, 0, 0, 0));
-    return Text(meridian, style: PickerDelegate.style(context));
+    return Text(
+      meridian,
+      style: PickerDelegate.style(context),
+      textScaleFactor: 1.0,
+    );
   }
 
   bool shouldRebuild(oldDelegate) => true;

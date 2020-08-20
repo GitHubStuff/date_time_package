@@ -23,7 +23,13 @@ class PickerColumnWidget extends StatelessWidget {
     return GestureDetector(
       onTap: null,
       child: ListWheelScrollView(
-        children: <Widget>[Text(seperator, style: PickerDelegate.style(context))],
+        children: <Widget>[
+          Text(
+            seperator,
+            style: PickerDelegate.style(context),
+            textScaleFactor: 1.0,
+          )
+        ],
         itemExtent: _EXTENT,
       ),
     );
