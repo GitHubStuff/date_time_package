@@ -9,21 +9,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  after_layout: ^1.0.7+2 # Execute code after first layout
-  auto_size_text: ^2.1.0 # Automatically resizes text to fit perfectly within its bounds.
-  cupertino_icons: ^0.1.3
-  enum_to_string: ^1.0.9
-  equatable: ^1.2.0 # Needed for flutter_bloc
-  flutter_bloc: ^6.0.1 # Widges to implement BLoC pattern
   flutter_localizations: # Flutter SDK for internalization
     sdk: flutter
-  flutter_modular: ^1.3.2 # Smart project structure with dependency injection and route management
+  # Add Project specific packages here ...
+  date_time_package:
+    path: ../
+  font_awesome_flutter:
+    git:
+      url: https://github.com/GitHubStuff/font_awesome_flutter.git
   mode_theme:
     git:
       url: https://github.com/GitHubStuff/mode_theme.git
-  tracers:
-    git:
-      url: https://github.com/GitHubStuff/tracers.git
   # SQLite extras
   sqlite_controller:
     git:
@@ -31,12 +27,16 @@ dependencies:
   sqlite_explorer:
     git:
       url: https://github.com/GitHubStuff/sqlite_explorer.git
-  font_awesome_flutter:
+  tracers:
     git:
-      url: https://github.com/GitHubStuff/font_awesome_flutter.git
-  # Add Project specific packages here ...
-  date_time_package:
-    path: ../
+      url: https://github.com/GitHubStuff/tracers.git
+  after_layout: ^1.0.7+2 # Execute code after first layout
+  auto_size_text: ^2.1.0 # Automatically resizes text to fit perfectly within its bounds.
+  cupertino_icons: ^0.1.3
+  enum_to_string: ^1.0.9
+  equatable: ^1.2.0 # Needed for flutter_bloc
+  flutter_bloc: ^6.0.1 # Widges to implement BLoC pattern
+  flutter_modular: ^2.0.1 # Smart project structure with dependency injection and route management
 
 dev_dependencies:
   flutter_test:
